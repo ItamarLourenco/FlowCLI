@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowCLI</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="xterm.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <span class="logo">⚡ FlowCLI</span>
+      <div class="tabs" id="tabs"></div>
+      <button class="btn-new-project" id="btn-new-project" title="New project">+</button>
+    </header>
+
+    <!-- Main content -->
+    <main class="main" id="main">
+      <!-- Empty state -->
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📁</div>
+        <h2>No projects yet</h2>
+        <p>Create your first project to get started.</p>
+        <button class="btn-primary" id="btn-empty-create">+ Create Project</button>
+      </div>
+
+      <!-- Kanban board (injected dynamically) -->
+    </main>
+
+    <!-- New Project Modal -->
+    <div class="modal hidden" id="modal-project">
+      <div class="modal-box">
+        <h2>New Project</h2>
+        <div class="field">
+          <label>Name</label>
+          <input id="proj-name" type="text" placeholder="My Project" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label>Directory</label>
+          <div class="dir-row">
+            <input id="proj-dir" type="text" placeholder="Select a folder…" readonly />
+            <button class="btn-secondary" id="btn-pick-dir">Browse</button>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="btn-proj-cancel">Cancel</button>
+          <button class="btn-primary" id="btn-proj-confirm">Create</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- New Task Modal -->
+    <div class="modal hidden" id="modal-task">
+      <div class="modal-box">
+        <h2 id="modal-task-title">New Task</h2>
+        <div class="field">
+          <label>Title</label>
+          <input id="task-title-input" type="text" placeholder="Task title…" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label>Primeiro prompt</label>
+          <textarea id="task-desc-input" placeholder="O que você quer pedir ao Claude…" rows="3"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="btn-task-cancel">Cancel</button>
+          <button class="btn-primary" id="btn-task-confirm">Save</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="task-tooltip" class="task-tooltip hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>
